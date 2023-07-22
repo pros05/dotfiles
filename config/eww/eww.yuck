@@ -1,3 +1,10 @@
+; ///////////////////////
+; /// TESTING BATTERY ///
+; ///////////////////////
+
+(defpoll batteryremaining :interval "10s"
+  "cat /sys/class/power_supply/BAT0/capacity")
+
 (defwidget bar []
     (centerbox :orientation "h"
       (workspaces)
@@ -10,7 +17,7 @@
               :value volume
               :onchange "amixer -D pulse sset Master {}%")
       (metric :label "🔋"
-              :value {$cat /sys/class/power_supply/BAT0/capacity}
+              :value {batteryremaining}
               :onchange "")
       (metric :label "💾"
               :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
