@@ -1,10 +1,8 @@
-; ///////////////////////
-; /// TESTING BATTERY ///
-; ///////////////////////
-
+; BATTERY
 (defpoll batteryremaining :interval "10s"
   "cat /sys/class/power_supply/BAT0/capacity")
 
+  
 (defwidget bar []
     (centerbox :orientation "h"
       (workspaces)
