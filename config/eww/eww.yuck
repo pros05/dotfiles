@@ -18,7 +18,10 @@
               :value {batteryremaining}
               :onchange "")
       (metric :label "💾"
-              :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+              :value {used_mem_perc}
+              :onchange "")
+      (metric :label "🖥️"
+              :value {avg}
               :onchange "")
       time))
   
