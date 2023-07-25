@@ -1,6 +1,10 @@
 ; BATTERY
-(defpoll batteryremaining :interval "10s"
+(defpoll batteryremaining 
   "cat /sys/class/power_supply/BAT0/capacity")
+; RAM
+(defpoll ramused "cat /sys/class/power_supply/BAT0/capacity")
+; CPU
+
 
   
 (defwidget bar []
@@ -15,13 +19,16 @@
               :value volume
               :onchange "amixer -D pulse sset Master {}%")
       (metric :label "🔋"
-              :value {batteryremaining}
+              :value {EWW_BATTERY.BAT0.batteryremaining}
               :onchange "")
       (metric :label "💾"
-              :value {used_mem_perc}
+              :value {EWW_RAM.used_mem_perc}
               :onchange "")
       (metric :label "🖥️"
-              :value {avg}
+              :value {EWW_CPU.avg}
+              :onchange "")
+      (metric :label "🌡️"
+              :value {EWW_TEMPS.COMPOSITE}
               :onchange "")
       time))
   
