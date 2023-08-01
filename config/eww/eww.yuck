@@ -13,7 +13,7 @@
   )
 )
 
-(defwindow barone
+(defwindow barone []
   :monitor 0
   :windowtype "dock"
   :geometry (geometry :x "0%"
