@@ -1,140 +1,38 @@
+; /// Windows ///
+(defwindow bar 
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "2%"
+                      :anchor "top center")
+  :stacking "fg" :exclusive "true"
+  (inbar)
+)
+
+
+
+; /// Widgets ///
+(defwidget inbar []
+  (centerbox :orientation "h"
+    (left)
+    (center)
+    (right)
+  )
+)
+
+(defwidget right [] 
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" 
+    time 
+  )
+)
+
+
+
 ; /// Polling variables ///
 (defpoll batteryremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity" )
 
 (defpoll time :interval "1s" "date '+%H:%M:%S'")
 
 
-
-; /// Widgets ///
-(defwidget inbarone []
-  (centerbox :orientation "h"
-    (workspaces)
-    (music)
-    (right)
-  )
-)
-
-(defwidget right [] 
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" time )
-)
-
-; /// Windows ///
-(defwindow barone 
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "100%"
-                      :height "5%"
-                      :anchor "top center")
-  :stacking "fg" :exclusive "true"
-  (inbarone)
-)
-
-
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label "🔋"
-            :value {EWW_BATTERY.BAT0.batteryremaining}
-            :onchange "")
-    (metric :label "💾"
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "🖥️"
-            :value {EWW_CPU.avg}
-            :onchange "")
-    (metric :label "🌡️"
-            :value {EWW_TEMPS.COMPOSITE}
-            :onchange "")
-    time))
-
-
-  
-(defwidget bar []
-    (centerbox :orientation "h"
-      (workspaces)
-      (music)
-      (sidestuff)))
-  
-  (defwidget sidestuff []
-    (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-      (metric :label "🔊"
-              :value volume
-              :onchange "amixer -D pulse sset Master {}%")
-      (metric :label "🔋"
-              :value {EWW_BATTERY.BAT0.batteryremaining}
-              :onchange "")
-      (metric :label "💾"
-              :value {EWW_RAM.used_mem_perc}
-              :onchange "")
-      (metric :label "🖥️"
-              :value {EWW_CPU.avg}
-              :onchange "")
-      (metric :label "🌡️"
-              :value {EWW_TEMPS.COMPOSITE}
-              :onchange "")
-      time))
-  
-
-
-  (defwidget workspaces []
-    (box :class "workspaces"
-         :orientation "h"
-         :space-evenly true
-         :halign "start"
-         :spacing 10
-      (button :onclick "wmctrl -s 0" 1)
-      (button :onclick "wmctrl -s 1" 2)
-      (button :onclick "wmctrl -s 2" 3)
-      (button :onclick "wmctrl -s 3" 4)
-      (button :onclick "wmctrl -s 4" 5)
-      (button :onclick "wmctrl -s 5" 6)
-      (button :onclick "wmctrl -s 6" 7)
-      (button :onclick "wmctrl -s 7" 8)
-      (button :onclick "wmctrl -s 8" 9)))
-  
-(defwidget music []
-    (box :class "music"
-         :orientation "h"
-         :space-evenly false
-         :halign "center"
-      {music != "" ? "🎵${music}" : ""}))
-  
-  
-(defwidget metric [label value onchange]
-    (box :orientation "h"
-         :class "metric"
-         :space-evenly false
-      (box :class "label" label)
-      (scale :min 0
-             :max 101
-             :active {onchange != ""}
-             :value value
-             :onchange onchange)))
-  
-  
-  
-(deflisten music :initial ""
-    "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
-  
-  (defpoll volume :interval "1s"
-    "scripts/getvol")
-  
-
-  
-  (defwindow bar
-    :monitor 0
-    :windowtype "dock"
-    :geometry (geometry :x "0%"
-                        :y "0%"
-                        :width "90%"
-                        :height "10px"
-                        :anchor "top center")
-    :reserve (struts :side "top" :distance "4%")
-    (bar))
-
-
-      
