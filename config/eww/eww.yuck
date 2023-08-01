@@ -7,7 +7,7 @@
 
 
 ; testing bar
-(defwidget barone 
+(defwidget inbarone 
   (centerbox :orientation "h" :width "100%" :height "5%"
     (workspaces)
     (music)
@@ -15,6 +15,17 @@
   )
 )
 
+(defwindow barone
+  :monitor 0
+  :windowtype "dock"
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "5%"
+                      :anchor "top center")
+  :stacking "fg" :exclusive 
+  (inbarone)
+  )
 
 
 
