@@ -1,7 +1,7 @@
 ; /// Polling variables ///
 (defpoll batteryremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity" )
 
-(defpoll time :interval "1s" "date '+%H:%M:%S`")
+(defpoll time :interval "1s" "date '+%H:%M:%S'")
 
 
 
@@ -14,9 +14,8 @@
   )
 )
 
-(defwidget right [] (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" 
-  time 
-)
+(defwidget right [] 
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" time )
 )
 
 ; /// Windows ///
@@ -136,3 +135,6 @@
                         :anchor "top center")
     :reserve (struts :side "top" :distance "4%")
     (bar))
+
+
+      
