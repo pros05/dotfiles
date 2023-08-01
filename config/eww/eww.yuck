@@ -23,8 +23,8 @@
 )
 
 (defwidget left [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "start" 
-    "%" batteryremaining
+  (box :class "na" :orientation "h" :space-evenly false :halign "start"
+    "Battery: "batteryremaining"%"
   )
 )
 
