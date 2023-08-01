@@ -22,8 +22,20 @@
   )
 )
 
+(defwidget left [] 
+  (box :class "na" :orientation "h" :space-evenly false :halign "start" 
+    EWW_BATTERY.BAT0.capacity 
+  )
+)
+
+(defwidget center [] 
+  (box :class "na" :orientation "h" :space-evenly false :halign "center" 
+    EWW_BATTERY.BAT0.status 
+  )
+)
+
 (defwidget right [] 
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end" 
+  (box :class "na" :orientation "h" :space-evenly false :halign "end" 
     time 
   )
 )
