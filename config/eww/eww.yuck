@@ -2,14 +2,13 @@
 ; ///// Windows /////
 ; ///////////////////
 (defwindow bar 
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "100%"
-                      :height "2%"
-                      :anchor "top center")
-  :stacking "fg" :exclusive "true" ; These properties are exclusive to Wayland
+  :monitor 0                                 ; Which monitor the window should be displayed on
+  :geometry (geometry :width "100%"          ; Width of window
+                      :height "2%"           ; Height of window
+                      :anchor "top center"   ; Anchor-point of window
+                      :x "0%"                ; Horizontal offset relative to anchor
+                      :y "0%"                ; Vertical offset relative to anchor
+  :stacking "fg" :exclusive "true"           ; These properties are exclusive to Wayland         ADD COMMENTS LATER!!!!!!!!!!
   (bar-inside)
 )
 
@@ -19,28 +18,27 @@
 ; ///// Widgets /////
 ; ///////////////////
 (defwidget bar-inside []
-  (centerbox :orientation "h"
+  (centerbox :class "bar" :orientation "h"
     (left)
     (center)
-    (right)
-  )
+    (right) 
+  ) 
 )
 
-; :class realized that this had an effect
 (defwidget left [] 
-  (box :class "bar" :orientation "h" :space-evenly false :halign "start" 
+  (box :orientation "h" :space-evenly false :halign "start" 
     "Battery: " batteryremaining "%"
   )
 )
 
 (defwidget center [] 
-  (box :class "bar" :orientation "h" :space-evenly false :halign "center" 
+  (box :orientation "h" :space-evenly false :halign "center" 
 
   )
 )
 
 (defwidget right [] 
-  (box :class "bar" :orientation "h" :space-evenly false :halign "end" 
+  (box :orientation "h" :space-evenly false :halign "end" 
     time 
   )
 )
