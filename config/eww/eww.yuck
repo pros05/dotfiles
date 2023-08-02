@@ -51,7 +51,7 @@
 ; ///////////////////
 ; //// Variables ////
 ; ///////////////////
-(defpoll batterremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
+(defpoll batteryremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
 (defpoll time :interval "1s" "date '+%H:%M:%S'")
 
 
