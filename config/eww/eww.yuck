@@ -26,20 +26,21 @@
   )
 )
 
+; :class "na" realized that this had an effect
 (defwidget left [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "start" 
+  (box :orientation "h" :space-evenly false :halign "start" 
     "Battery: " batteryremaining "%"
   )
 )
 
 (defwidget center [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "center" 
+  (box :orientation "h" :space-evenly false :halign "center" 
 
   )
 )
 
 (defwidget right [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "end" 
+  (box :orientation "h" :space-evenly false :halign "end" 
     time 
   )
 )
