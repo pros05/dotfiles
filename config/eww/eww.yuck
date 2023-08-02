@@ -8,7 +8,7 @@
                       :anchor "top center"   ; Anchor-point of window
                       :x "0%"                ; Horizontal offset relative to anchor
                       :y "0%"                ; Vertical offset relative to anchor
-  :stacking "fg" :exclusive "true"           ; These properties are exclusive to Wayland         ADD COMMENTS LATER!!!!!!!!!!
+  :stacking "fg" :exclusive "true")          ; These properties are exclusive to Wayland         ADD COMMENTS LATER!!!!!!!!!!
   (bar-inside)
 )
 
