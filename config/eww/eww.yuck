@@ -27,19 +27,19 @@
 )
 
 (defwidget left [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "start" :spacing 10
+  (box :class "na" :orientation "h" :space-evenly false :halign "start" 
     "Battery: " batteryremaining "%"
   )
 )
 
 (defwidget center [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "center" :spacing 10
+  (box :class "na" :orientation "h" :space-evenly false :halign "center" 
 
   )
 )
 
 (defwidget right [] 
-  (box :class "na" :orientation "h" :space-evenly false :halign "end" :spacing 10
+  (box :class "na" :orientation "h" :space-evenly false :halign "end" 
     time 
   )
 )
