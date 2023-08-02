@@ -1,4 +1,6 @@
-; /// Windows ///
+; ///////////////////
+; ///// Windows /////
+; ///////////////////
 (defwindow bar 
   :monitor 0
   :windowtype "dock"
@@ -13,7 +15,9 @@
 
 
 
-; /// Widgets ///
+; ///////////////////
+; ///// Widgets /////
+; ///////////////////
 (defwidget bar-inside []
   (centerbox :orientation "h"
     (left)
@@ -24,13 +28,13 @@
 
 (defwidget left [] 
   (box :class "na" :orientation "h" :space-evenly false :halign "start"
-    "Battery: "batteryremaining"%"
+    "Battery: " batteryremaining "%"
   )
 )
 
 (defwidget center [] 
   (box :class "na" :orientation "h" :space-evenly false :halign "center" 
-  
+    
   )
 )
 
@@ -42,8 +46,11 @@
 
 
 
-; /// Polling variables ///
-(defpoll batteryremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity" )
+
+; ///////////////////
+; //// Variables ////
+; ///////////////////
+(defpoll batterremaining :interval "1s" "cat /sys/class/power_supply/BAT0/capacity")
 (defpoll time :interval "1s" "date '+%H:%M:%S'")
 
 
