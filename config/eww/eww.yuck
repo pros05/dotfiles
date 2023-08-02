@@ -9,7 +9,7 @@
                       :width "100%"
                       :height "2%"
                       :anchor "top center")
-  :stacking "fg" :exclusive "true"
+  :stacking "fg" :exclusive "true" ; These properties are exclusive to Wayland
   (bar-inside)
 )
 
@@ -26,21 +26,21 @@
   )
 )
 
-; :class "na" realized that this had an effect
+; :class realized that this had an effect
 (defwidget left [] 
-  (box :orientation "h" :space-evenly false :halign "start" 
+  (box :class "bar" :orientation "h" :space-evenly false :halign "start" 
     "Battery: " batteryremaining "%"
   )
 )
 
 (defwidget center [] 
-  (box :orientation "h" :space-evenly false :halign "center" 
+  (box :class "bar" :orientation "h" :space-evenly false :halign "center" 
 
   )
 )
 
 (defwidget right [] 
-  (box :orientation "h" :space-evenly false :halign "end" 
+  (box :class "bar" :orientation "h" :space-evenly false :halign "end" 
     time 
   )
 )
